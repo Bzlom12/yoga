@@ -77,11 +77,8 @@ window.addEventListener('DOMContentLoaded', function() {
                 seconds.textContent = "00";
             }
         }
-
     }
     setClock('timer', deadline);
-
-        
 
     let li1 = document.getElementsByTagName('li')[0],
         li2 = document.getElementsByTagName('li')[1],
@@ -142,7 +139,24 @@ window.addEventListener('DOMContentLoaded', function() {
             scr = scr - 1;
             timer = setTimeout(scrollToLi4);
         }
-    }   
+    }
+
+    // Модальное окно
+    let more = document.querySelector(".more"),
+        overlay = document.querySelector(".overlay"),
+        close = document.querySelector(".popup-close");
+    more.addEventListener('click', function() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    });
+
+    close.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    });
+
 });
 
  
