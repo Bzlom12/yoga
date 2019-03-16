@@ -2,10 +2,10 @@
 
 let age = document.getElementById('age'),
     user = {
-        age:age.value
+        surname:"Green",
+        name:"Ann"
     };
-function showUser(surname, name) {
-    alert("Пользователь " + surname + " " + name + ", его возраст " + this.age);
-        
-}
-showUser.call(user, "Mark", "Green");
+    age.addEventListener('change', function get() {
+        // console.log(this);
+        alert("Пользователь " + user.surname + " " + user.name + ", его возраст " + this.value);
+    });  
