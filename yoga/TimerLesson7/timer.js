@@ -7,35 +7,28 @@ let hour = new Date().getHours(),
     minValue = document.getElementsByClassName("min-value")[0],
     secValue = document.getElementsByClassName("sec-value")[0];
 
-    hourValue.textContent = hour;
-    minValue.textContent = min;
-    secValue.textContent = sec;
-
 setInterval(timeNow, 1000);
 
+let zer = (a) => {
+    return (a < 10)? "0" + a : a;
+};
 function timeNow() {
     sec++;
-    secValue.textContent = sec;
-    if (sec < 10) {
-        secValue.textContent = "0" + sec;
-    }
+    secValue.textContent = zer(sec);
     if (sec == 60) {
         sec = 0;
         min++;
-        minValue.textContent = min;
-    }
-    if (min < 10) {
-        minValue.textContent = "0" + min;
+        minValue.textContent = zer(min);
     }
     if (min == 60) {
         min = 0;
         hour++;
-        hourValue.textContent = hour;
-    }
-    if (hour < 10) {
-        hourValue.textContent = "0" + hour;
+        hourValue.textContent = zer(hour);
     }
     if (hour == 24) {
         hour = 0;
     }
 }
+hourValue.textContent = hour;
+minValue.textContent = min;
+secValue.textContent = sec;
