@@ -44,9 +44,7 @@ window.addEventListener('DOMContentLoaded', function() {
         addEventListener('click', function(event) {
             for(let i = 0; i < more.length; i++) {
                 if (more[i] == event.target) {
-                    overlay.style.display = 'block';
-                    more[i].classList.add('more-splash');
-                    document.body.style.overflow = 'hidden';
+                moreOpen(more[i]);
                 }
                 close.addEventListener('click', function() {
                     overlay.style.display = 'none';
@@ -56,10 +54,13 @@ window.addEventListener('DOMContentLoaded', function() {
                 }   
             });
         });
-    moreTimer.addEventListener('click', function() {
+    let moreOpen = function(button) {
         overlay.style.display = 'block';
-        this.classList.add('more-splash');
+        button.classList.add('more-splash');
         document.body.style.overflow = 'hidden';
+    }
+    moreTimer.addEventListener('click', function() {
+        moreOpen(moreTimer);
     });
     
     //Таймер
