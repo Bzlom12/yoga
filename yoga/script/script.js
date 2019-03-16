@@ -1,11 +1,11 @@
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
 
     'use strict';
     let  tab = document.querySelectorAll('.info-header-tab'),
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
 
-    function hideTabContent(a) {
+    let hideTabContent = (a) => {
         for (let i = a; i < tabContent.length; i++) {
             tabContent[i].classList.remove('show');
             tabContent[i].classList.add('hide');
@@ -14,14 +14,14 @@ window.addEventListener('DOMContentLoaded', function() {
 
     hideTabContent(1);
 
-    function showTabContent(b) {
+    let showTabContent = (b) => {
         if (tabContent[b].classList.contains('hide')) {
             tabContent[b].classList.remove('hide');
             tabContent[b].classList.add('show');
         }
     }
 
-    info.addEventListener('click', function(event) {
+    info.addEventListener('click', (event) => {
         let target = event.target;
         if (target && target.classList.contains('info-header-tab')) {
             for (let i = 0; i < tab.length; i++) {
@@ -40,33 +40,37 @@ window.addEventListener('DOMContentLoaded', function() {
         overlay = document.querySelector(".overlay"),
         close = document.querySelector(".popup-close");
 
-        more.forEach(function() {
-        addEventListener('click', function(event) {
+    more.forEach( () => {
+        addEventListener('click', (event) => {
             for(let i = 0; i < more.length; i++) {
                 if (more[i] == event.target) {
-                moreOpen(more[i]);
+                    moreOpen(more[i]);
                 }
-                close.addEventListener('click', function() {
-                    overlay.style.display = 'none';
-                    more[i].classList.remove('more-splash');
-                    document.body.style.overflow = '';
-                    });
-                }   
-            });
+            }   
         });
-    let moreOpen = function(button) {
+    });
+
+    let moreOpen = (button) => {
         overlay.style.display = 'block';
         button.classList.add('more-splash');
         document.body.style.overflow = 'hidden';
-    }
-    moreTimer.addEventListener('click', function() {
+    };
+
+    moreTimer.addEventListener('click', () => {
         moreOpen(moreTimer);
     });
+
+    close.addEventListener('click', () => {
+        overlay.style.display = 'none';
+        moreTimer.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    });
+
     
     //Таймер
-    let deadline = '2019-03-14';   //дата до которой будет отсчет
+    let deadline = '2019-04-14';   //дата до которой будет отсчет
 
-    function getTimeRemaning(endtime) {
+    let getTimeRemaning = (endtime) => {
         let t = Date.parse(endtime) - Date.parse(new Date()), //время оставшееся от текущей даты
             seconds = Math.floor((t/1000) % 60),
             minutes = Math.floor((t/1000/60) % 60),
@@ -88,7 +92,7 @@ window.addEventListener('DOMContentLoaded', function() {
             'seconds' : seconds
         }
     }
-    function setClock (id, endtime) {
+    let setClock = (id, endtime) => {
         let timer = document.getElementById(id),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
