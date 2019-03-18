@@ -62,38 +62,40 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Animate form
     close.addEventListener('click', () => {
-    //     // if (navigator.appName == 'Microsoft Internet Explorer' 
-    //     //      || navigator.appName == 'Microsoft Edge') {
-    //     //  
-    //     // }
+        if (navigator.appName == 'Microsoft Internet Explorer' 
+            || navigator.appName == 'Microsoft Edge') {
+        
+            // close.addEventListener('click', () => {
+            //     moreTimer.classList.remove('more-splash');
+            //     document.body.style.overflow = '';
+            //     overlay.style.display = "none";
+            //     overlay.style.animation = "closing";
+            //     overlay.style.animationDuration = "2s";
+            //     console.log("css анимация");
+            // });
+        } else if (navigator.userAgent.indexOf("Opera") != -1 || navigator.userAgent.indexOf("Chrome") != -1
+        || navigator.userAgent.indexOf("Safari") != -1 || navigator.userAgent.indexOf("Firefox") != -1) {
+
             overlay.style.animation = "closing";
             overlay.style.animationDuration = "2s";
-        let counter = 100;
-        const id = setInterval(frame, 10);
-        function frame() {
-            if ( counter == 10) {
-                clearInterval(id);
-                overlay.style.display = "none";
-                moreTimer.classList.remove('more-splash');
-                document.body.style.overflow = '';
-                overlay.style.opacity = 100;
-            } else {
-                counter--;
-                overlay.style.transform = `translateY(-${counter}px)`;
-                overlay.style.opacity = '.' + counter;
-            }   
-        }    
+            let counter = 100;
+            const id = setInterval(frame, 10);
+            function frame() {
+                if ( counter == 10) {
+                    clearInterval(id);
+                    overlay.style.display = "none";
+                    moreTimer.classList.remove('more-splash');
+                    document.body.style.overflow = '';
+                    overlay.style.opacity = 100;
+                } else {
+                    counter--;
+                    overlay.style.transform = `translateY(-${counter}px)`;
+                    overlay.style.opacity = '.' + counter;
+                }   
+            }    
+        }
+    
     });
-
-    //CSS3 animate
-    // close.addEventListener('click', () => {
-    //     moreTimer.classList.remove('more-splash');
-    //     document.body.style.overflow = '';
-    //     overlay.style.display = "none";
-    //     overlay.style.animation = "closing";
-    //     overlay.style.animationDuration = "2s";
-    // });
-
     // Form
     let message = {
         loadind: 'Загрузка...',
@@ -240,9 +242,7 @@ window.addEventListener('DOMContentLoaded', () => {
     //         scr = scr + 1;
     //         timer = setTimeout(get(a));
     //     }
-    // }; 
-    
-
+    // };
 });
 
  

@@ -519,8 +519,6 @@ header ul li:before {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 3;
-  animation: closing;
-  animation-duration: 2s;
 }
 .overlay .popup {
   position: fixed;
