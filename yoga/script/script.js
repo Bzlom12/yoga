@@ -101,9 +101,9 @@ window.addEventListener('DOMContentLoaded', () => {
         failure: 'Что-то пошло не так...'
     };
 
-    let sendForm = function (a, b) {
+    let sendForm = function (a) {
         let form = document.querySelector(a),
-            input = form.getElementsByTagName(b),
+            input = form.getElementsByTagName("input"),
             statusMessage = document.createElement('div');
             statusMessage.classList.add('status');
         form.addEventListener('submit', function(event) {
@@ -140,58 +140,18 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    sendForm(".main-form",'input');
-    let contactForm = document.querySelector("form"),
-        inputF = contactForm.getElementsByTagName("input");   
-    sendForm("form", "input");
-        
-        // let form = document.querySelector('.main-form'),
-        //     input = form.getElementsByTagName('input'),
-        //     statusMessage = document.createElement('div');
-        //     statusMessage.classList.add('status');
-
-    //     form.addEventListener('submit', function(event) {
-    //         event.preventDefault();
-    //         form.appendChild(statusMessage);
-
-    //         let request = new XMLHttpRequest();
-    //         request.open('POST', 'server.php');
-    //         // request.setRequestHeader('Content-Type', 'appLication/x-www-form-urlencoded');
-    //         request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-
-    //         let formData = new FormData(form);
-
-    //         let obj = {};
-    //         formData.forEach(function(value, key) {
-    //             obj[key] = value;
-    //         });
-    //         let json = JSON.stringify(obj);
-    //         // request.send(formData);
-    //         request.send(json);
-    //         request.addEventListener('readystatechange', function() {
-    //             if (request.readyState < 4) {
-    //                 statusMessage.innerHTML = message.loadind;
-    //             } else if (request.readyState === 4 && request.status == 200) {
-    //                 statusMessage.innerHTML = message.success;
-    //             } else {
-    //                 statusMessage.innerHTML = message.failure;
-    //             }
-
-    //         });
-    //         for (let i = 0; i < input.length; i++) {
-    //             input[i].value = '';
-    //         }
-    //     });
+    sendForm(".main-form");
+    sendForm("form");
     
-    // //Contact Form
-    // let contactForm = document.getElementById('form'),
-    //     inputF = contactForm.getElementsByTagName('input')[0],
-    //     inputF2 = contactForm.getElementsByTagName('input')[1];
-       
-
-
-      
-        
+    function validPhone() {
+        let reg = /^\d[\d\(\)\ -]{4,14}\d$/,
+            phone = document.getElementById('phone').value,
+            valid = reg.test(phone);
+            if (valid) output = "Номер телефона введен правильно!";
+            else output = "Номер телефона введен не правильно!";
+            return valid;
+    }
+             
     //Таймер
     let deadline = '2019-04-14';   //дата до которой будет отсчет
 
