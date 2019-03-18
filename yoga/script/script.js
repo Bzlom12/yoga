@@ -60,13 +60,66 @@ window.addEventListener('DOMContentLoaded', () => {
         moreOpen(moreTimer);
     });
 
+    // Animate form
+    // close.addEventListener('click', () => {
+    //     // if (navigator.appName == 'Microsoft Internet Explorer' 
+    //     //      || navigator.appName == 'Microsoft Edge') {
+    //     //  
+    //     // }
+    //         overlay.style.animation = "closing";
+    //         overlay.style.animationDuration = "2s";
+    //     let counter = 100;
+    //     const id = setInterval(frame, 10);
+    //     function frame() {
+    //         if ( counter == 10) {
+    //             clearInterval(id);
+    //             overlay.style.display = "none";
+    //             moreTimer.classList.remove('more-splash');
+    //             document.body.style.overflow = '';
+    //             overlay.style.opacity = 100;
+    //         } else {
+    //             counter--;
+    //             overlay.style.transform = `translateY(-${counter}px)`;
+    //             overlay.style.opacity = '.' + counter;
+    //         }   
+    //     }    
+    // });
+
+    //CSS3 animate
     close.addEventListener('click', () => {
-        overlay.style.display = 'none';
         moreTimer.classList.remove('more-splash');
         document.body.style.overflow = '';
+        overlay.style.display = "none";
+        overlay.style.animation = "closing";
+        overlay.style.animationDuration = "2s";
     });
 
+    // Form
+        let message = {
+            loadind: 'Загрузка...',
+            success: 'Спасибо! Скоро мы с Вами свяжемся!',
+            failure: 'Что-то пошло не так...'
+        };
+
+        let form = document.querySelector('.main-form'),
+            input = form.getElementsByTagName('input'),
+            statusMessage = document.createElement('div');
+            statusMessage.classList.add('status');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            form.appendChild(statusMessage);
+
+            let request = new XMLHttpRequest();
+            request.open('POST', 'server.php');
+            request.setRequestHeader('Content-Type', 'appLication/x-www-form-urlencoded');
+
+            let formData = new FormData(form);
+            request.send(formData);
+        });
     
+      
+        
     //Таймер
     let deadline = '2019-04-14';   //дата до которой будет отсчет
 
@@ -113,107 +166,51 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
     setClock('timer', deadline);
-});
+
+  
 
 
 
 
-    // let inf = document.getElementsByClassName("info");
-    // //Scroll
+    // let inf = document.getElementsByClassName("info")[0],
+    //     slider = document.getElementsByClassName("slider")[0],
+    //     counter = document.getElementsByClassName("counter")[0],
+    //     contact = document.getElementsByClassName("contact")[0];
+    // // console.log(contact.getBoundingClientRect().top);
+    
     // let li = document.querySelectorAll("li");
+   
     // // console.log(li);
     // for (let i = 0; i < li.length; i++) {
     //     li[i].addEventListener('click', function(event) {
-    //         if (li[0] == event.target) {
-    //             let scr = window.pageYOffset;
-    //             console.log(scr);
-    //             let get =function() {
-    //                     let timer;
-    //                     if(scr == 0 || scr < 650) {
-    //                         scr = scr + 1;
-    //                         timer = setTimeout(get());
-    //                     } else {
-    //                         scr = scr - 1;
-    //                         timer = setTimeout(set());
-    //                     }
+    //         if (li[i] == event.target) {
+    //             if (i == 0) {
+    //                 get(inf);
+    //             }
+    //             if (i == 1) {
+    //                 get(slider);
+    //             }
+    //             if (i == 2) {
+    //                 get(counter);
+    //             }
+    //             if (i == 3) {
+    //                 get(contact);
     //             }
     //         }
-    //     });
+    //     }
+    // );
     // }
-        //     let scr = window.pageYOffset;
-        //     console.log(scr);
-        //     console.log(this);
-        //     let timer;
-        //     if (scr == 0 || scr < 650) {
-        //         window.scrollTo(0, scr);
-        //         scr++;
-        //         // timer = setTimeout(timeInt);
-        //     }
-
-    //     // });
-    // });
-
-    // let scroll = function() {
-
-    // };
-
-    // scr = window.pageYOffset;
-    // console.log(window.pageYOffset); 
-    // li1.addEventListener('click', scrollToLi1);
-    // li2.addEventListener('click', scrollToLi2);
-    // li3.addEventListener('click', scrollToLi3);
-    // li4.addEventListener('click', scrollToLi4);
-   
-    // function scrollToLi1() {
+    //  let get = function(a) {
+    //     let scr = window.pageYOffset;
     //     let timer;
-    //     if (scr < 650 || scr == 0) {
+    //     if (a.getBoundingClientRect().top != 0) {
     //         window.scrollTo(0, scr);
     //         scr = scr + 1;
-    //         timer = setTimeout(scrollToLi1);
-    //     } else if (scr > 652 || scr != 650) {
-    //         window.scrollTo(0, scr);
-    //         scr = scr - 1;
-    //         timer = setTimeout(scrollToLi1);
+    //         timer = setTimeout(get(a));
     //     }
-    // }    
-    // function scrollToLi2() {
-    //     let timer;
-    //     if (scr < 1933 || scr == 0) {
-    //         window.scrollTo(0, scr);
-    //         scr = scr + 1;
-    //         timer = setTimeout(scrollToLi2);
-    //     } else if (scr > 1950 || scr != 1933) {
-    //         window.scrollTo(0, scr);
-    //         scr = scr - 1;
-    //         timer = setTimeout(scrollToLi2);
-    //     }
-    // }
-    // function scrollToLi3() {
-    //     let timer;
-    //     if (scr < 4679 || scr == 0) {
-    //         window.scrollTo(0, scr);
-    //         scr = scr + 1;
-    //         timer = setTimeout(scrollToLi3);
-    //     } else if (scr > 4680 || scr != 4679) {
-    //         window.scrollTo(0, scr);
-    //         scr = scr - 1;
-    //         timer = setTimeout(scrollToLi3);
-    //     }
-    // }
-    // function scrollToLi4() {
-    //     let timer;
-    //     if (scr < 5221 || scr == 0) {
-    //         window.scrollTo(0, scr);
-    //         scr = scr + 1;
-    //         timer = setTimeout(scrollToLi4);
-    //     } else if (scr > 5230 || scr != 5221) {
-    //         window.scrollTo(0, scr);
-    //         scr = scr - 1;
-    //         timer = setTimeout(scrollToLi4);
-    //     }
-    // }
+    // }; 
+    
 
-
-
+});
 
  

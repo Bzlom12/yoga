@@ -519,6 +519,8 @@ header ul li:before {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 3;
+  animation: closing;
+  animation-duration: 2s;
 }
 .overlay .popup {
   position: fixed;
@@ -617,4 +619,14 @@ header ul li:before {
 }
 .overlay .popup-form__btn:hover {
   box-shadow: 0 0 10px #c78030;
+}
+@keyframes closing {
+  0% {
+    transform: 0px;
+    opacity: 1;
+  }
+  100% {
+    transform: 100px;
+    opacity: 0;
+  }
 }

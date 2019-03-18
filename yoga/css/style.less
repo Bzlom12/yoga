@@ -522,6 +522,7 @@ header {
 		}
 	}
 }
+
 .overlay{
 	position: fixed;
 	display: none;
@@ -530,6 +531,8 @@ header {
 	height: 100%;
 	background-color: rgba(0,0,0,.5);
 	z-index: 3;
+	animation: closing;
+	animation-duration: 2s;
 	.popup {
 		position: fixed;
 		z-index: 4;
@@ -545,6 +548,7 @@ header {
 			font-size: 35px;
 			color: #fff;
 			font-weight: 300;
+		
 		}
 		&-title {
 			display: block;
@@ -611,5 +615,17 @@ header {
 				}
 			}
 		}
+	}
+}
+@keyframes closing {
+	0% {
+		transform: 0px;
+		opacity: 1;
+	}
+
+	100% {
+		transform: 100px;
+		opacity: 0;
+		
 	}
 }
