@@ -169,19 +169,18 @@ window.addEventListener('DOMContentLoaded', () => {
     let value = inp.value;
         inp.addEventListener("input", function(e) {
 
-        let reg = /[\d]+/g;     
-        let value2 = e.target.value;
-                // console.log(valid);
-            if (value2.match(reg)) {
-                inp.value = value2;
-                console.log("good");
-                return false;
-            } else {
-                console.log("not");
-                inp.value = value;
-                return false;
-            }
-           
+                let reg = /[^\d\+]/g;     
+                let value2 = e.target.value;
+                        // console.log(valid);
+                    if (!value2.match(reg)) {
+                        inp.value = value2;
+                        console.log("good");
+                        return false;
+                    } else {
+                        console.log("not");
+                        inp.value = value;
+                        return false;
+                    }
         });
         
        
