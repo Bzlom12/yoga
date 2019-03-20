@@ -166,6 +166,7 @@ window.addEventListener('DOMContentLoaded', () => {
     
 
     let inp = document.getElementById("phone");
+
     let value = inp.value;
         inp.addEventListener("input", function(e) {
 
@@ -181,9 +182,25 @@ window.addEventListener('DOMContentLoaded', () => {
                         inp.value = value;
                         return false;
                     }
+                    
         });
         
-       
+        let inp2 = document.getElementsByClassName('popup-form__input')[0];
+        let value3 = inp2.value;
+            inp2.addEventListener("input", function(e) {
+                let reg = /[^\d\+]/g;     
+                let value2 = e.target.value;
+                        // console.log(valid);
+                    if (!value2.match(reg)) {
+                        inp2.value = value2;
+                        console.log("good");
+                        return false;
+                    } else {
+                        console.log("not");
+                        inp2.value = value3;
+                        return false;
+                    }
+            });
     
              
     //Таймер
