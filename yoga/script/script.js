@@ -163,19 +163,25 @@ window.addEventListener('DOMContentLoaded', () => {
     sendForm(".main-form");
     sendForm("form");
     
-    let inp = document.getElementById("phone");
+    
 
-        inp.addEventListener("change", function() {
-            let reg = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
-            valid = reg.test(inp.value);
-            // console.log(valid);
-            if (valid === true) {
+    let inp = document.getElementById("phone");
+    let value = inp.value;
+        inp.addEventListener("input", function(e) {
+
+        let reg = /[\d]+/g;     
+        let value2 = e.target.value;
+                // console.log(valid);
+            if (value2.match(reg)) {
+                inp.value = value2;
                 console.log("good");
+                return false;
             } else {
                 console.log("not");
-                inp.value = "";
+                inp.value = value;
+                return false;
             }
-
+           
         });
         
        
@@ -225,7 +231,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 seconds.textContent = "00";
             }
         }
-    }
+    };
     setClock('timer', deadline);
 
     //slider
@@ -295,7 +301,7 @@ window.addEventListener('DOMContentLoaded', () => {
         persons.addEventListener('change', function() {
             personsSum = +this.value;
             total = (daysSum + personsSum) * 4000;
-
+            
             if (restDays.value == '') {
                 totalValue.innerHTML = 0;
             } else {
@@ -306,7 +312,7 @@ window.addEventListener('DOMContentLoaded', () => {
         restDays.addEventListener('change', function() {
             daysSum = +this.value;
             total = (daysSum + personsSum) * 4000;
-
+           
             if (persons.value == '') {
                 totalValue.innerHTML = 0;
             } else {
@@ -323,6 +329,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        
 
 
 
