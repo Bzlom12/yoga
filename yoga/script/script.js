@@ -163,7 +163,7 @@ window.addEventListener('DOMContentLoaded', () => {
     sendForm(".main-form");
     sendForm("form");
     
-    //Check
+    //Check form
     function validPhone(b) {
         let a = document.getElementById(b); //a
         let value = a.value;
@@ -187,6 +187,35 @@ window.addEventListener('DOMContentLoaded', () => {
 
     validPhone("phone");
     validPhone("phone1");
+
+    //Check calk
+    let num = document.querySelectorAll('.counter-block-input');
+
+    num.forEach(function(item) {
+        let value = item.value;
+        
+        item.addEventListener("input", function(e) {
+        let reg = /^[e\+\-]/g;
+        let value2 = e.target.value;
+
+        if (!value2.match(reg)) {
+            item.value = value2;
+            console.log("good");
+            return false;
+        } else {
+            console.log("not");
+            item.value = value;
+            return false;
+        }
+        });
+    }); 
+        
+    
+
+
+
+
+
 
     //Timer
     let deadline = '2019-04-14';   //дата до которой будет отсчет
