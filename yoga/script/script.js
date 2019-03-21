@@ -195,7 +195,7 @@ window.addEventListener('DOMContentLoaded', () => {
         let value = item.value;
         
         item.addEventListener("input", function(e) {
-        let reg = /^[e\+\-]/g;
+        let reg = /^[[\d]*[,.]?.e\+\-]/g;
         let value2 = e.target.value;
 
         if (!value2.match(reg)) {
@@ -332,7 +332,7 @@ window.addEventListener('DOMContentLoaded', () => {
             personsSum = +this.value;
             total = (daysSum + personsSum) * 4000;
             
-            if (restDays.value == '') {
+            if (restDays.value == '' || personsSum == "") {
                 totalValue.innerHTML = 0;
             } else {
                 totalValue.innerHTML = total;
@@ -343,7 +343,7 @@ window.addEventListener('DOMContentLoaded', () => {
             daysSum = +this.value;
             total = (daysSum + personsSum) * 4000;
            
-            if (persons.value == '') {
+            if (persons.value == '' || daysSum == "") {
                 totalValue.innerHTML = 0;
             } else {
                 totalValue.innerHTML = total;
