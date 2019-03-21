@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Модальное окно
+    // modal window
     let more = document.querySelectorAll('.description-btn'),
         moreTimer = document.querySelector(".more"),
         overlay = document.querySelector(".overlay"),
@@ -163,47 +163,32 @@ window.addEventListener('DOMContentLoaded', () => {
     sendForm(".main-form");
     sendForm("form");
     
-    
+    //Check
+    function validPhone(b) {
+        let a = document.getElementById(b); //a
+        let value = a.value;
+        a.addEventListener("input", function(e) {
 
-    let inp = document.getElementById("phone");
-
-    let value = inp.value;
-        inp.addEventListener("input", function(e) {
-
-                let reg = /[^\d\+]/g;     
-                let value2 = e.target.value;
-                        // console.log(valid);
-                    if (!value2.match(reg)) {
-                        inp.value = value2;
-                        console.log("good");
-                        return false;
-                    } else {
-                        console.log("not");
-                        inp.value = value;
-                        return false;
-                    }
+            let reg = /[^\d\+]/g;     
+            let value2 = e.target.value;
                     
+                if (!value2.match(reg)) {
+                    a.value = value2;
+                    console.log("good");
+                    return false;
+                } else {
+                    console.log("not");
+                    a.value = value;
+                    return false;
+                }
+                
         });
-        
-        let inp2 = document.getElementsByClassName('popup-form__input')[0];
-        let value3 = inp2.value;
-            inp2.addEventListener("input", function(e) {
-                let reg = /[^\d\+]/g;     
-                let value2 = e.target.value;
-                        // console.log(valid);
-                    if (!value2.match(reg)) {
-                        inp2.value = value2;
-                        console.log("good");
-                        return false;
-                    } else {
-                        console.log("not");
-                        inp2.value = value3;
-                        return false;
-                    }
-            });
-    
-             
-    //Таймер
+    };
+
+    validPhone("phone");
+    validPhone("phone1");
+
+    //Timer
     let deadline = '2019-04-14';   //дата до которой будет отсчет
 
     let getTimeRemaning = (endtime) => {
@@ -344,19 +329,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 totalValue.innerHTML = a * this.options[this.selectedIndex].value;
             }
         });
-
-        
-
-
-
-
-
-
-
-
-
-
-
 
 
     // let inf = document.getElementsByClassName("info")[0],
