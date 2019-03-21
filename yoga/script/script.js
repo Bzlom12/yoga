@@ -195,7 +195,7 @@ window.addEventListener('DOMContentLoaded', () => {
         let value = item.value;
         
         item.addEventListener("input", function(e) {
-        let reg = /^[[\d]*[,.]?.e\+\-]/g;
+        let reg = /[^\d$]/g;
         let value2 = e.target.value;
 
         if (!value2.match(reg)) {
