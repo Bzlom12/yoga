@@ -167,10 +167,8 @@ function calc() {
 
       if (!value2.match(reg)) {
         item.value = value2;
-        console.log("good");
         return false;
       } else {
-        console.log("not");
         item.value = value;
         return false;
       }
@@ -264,10 +262,8 @@ function form() {
 
       if (!value2.match(reg)) {
         a.value = value2;
-        console.log("good");
         return false;
       } else {
-        console.log("not");
         a.value = value;
         return false;
       }
@@ -315,8 +311,6 @@ function modal() {
     moreOpen(moreTimer);
   });
   close.addEventListener('click', function () {
-    overlay.style.animation = "closing";
-    overlay.style.animationDuration = "2s";
     var counter = 100;
     var id = setInterval(frame, 10);
 

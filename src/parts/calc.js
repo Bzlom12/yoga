@@ -52,10 +52,8 @@ function calc() {
 
         if (!value2.match(reg)) {
             item.value = value2;
-            console.log("good");
             return false;
         } else {
-            console.log("not");
             item.value = value;
             return false;
         }

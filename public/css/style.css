@@ -618,13 +618,3 @@ header ul li:before {
 .overlay .popup-form__btn:hover {
   box-shadow: 0 0 10px #c78030;
 }
-@keyframes closing {
-  0% {
-    transform: 0px;
-    opacity: 1;
-  }
-  100% {
-    transform: 100px;
-    opacity: 0;
-  }
-}

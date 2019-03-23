@@ -25,8 +25,6 @@ function modal() {
     });
 
     close.addEventListener('click', () => {
-        overlay.style.animation = "closing";
-        overlay.style.animationDuration = "2s";
         let counter = 100;
         const id = setInterval(frame, 10);
 
