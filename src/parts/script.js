@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
 
     'use strict';
+    //tabs
     let  tab = document.querySelectorAll('.info-header-tab'),
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
@@ -60,24 +61,9 @@ window.addEventListener('DOMContentLoaded', () => {
         moreOpen(moreTimer);
     });
 
-    // Animate form
     close.addEventListener('click', () => {
-        if (navigator.appName == 'Microsoft Internet Explorer' 
-            || navigator.appName == 'Microsoft Edge') {
-        
-            // close.addEventListener('click', () => {
-            //     moreTimer.classList.remove('more-splash');
-            //     document.body.style.overflow = '';
-            //     overlay.style.display = "none";
-            //     overlay.style.animation = "closing";
-            //     overlay.style.animationDuration = "2s";
-            //     console.log("css анимация");
-            // });
-        } else if (navigator.userAgent.indexOf("Opera") != -1 || navigator.userAgent.indexOf("Chrome") != -1
-        || navigator.userAgent.indexOf("Safari") != -1 || navigator.userAgent.indexOf("Firefox") != -1) {
-
-            overlay.style.animation = "closing";
-            overlay.style.animationDuration = "2s";
+        overlay.style.animation = "closing";
+        overlay.style.animationDuration = "2s";
             let counter = 100;
             const id = setInterval(frame, 10);
             function frame() {
@@ -93,11 +79,9 @@ window.addEventListener('DOMContentLoaded', () => {
                     overlay.style.opacity = '.' + counter;
                 }   
             }    
-        }
-    
-    });
-    
-    // Form
+        });
+        
+    //form
     let message = {
         loadind: 'Загрузка...',
         success: 'Спасибо! Скоро мы с Вами свяжемся!',
