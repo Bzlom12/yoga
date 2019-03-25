@@ -202,51 +202,44 @@ function form() {
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       form.appendChild(statusMessage);
-      var formData = new FormData(form);
-
-      function postData(data) {
-        return new Promise(function (resolve, reject) {
-          var request = new XMLHttpRequest();
-          request.open('POST', 'server.php');
-          request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-
-          request.onreadystatechange = function () {
+      var formData = new FormData(form),
+          obj = {};
+      formData.forEach(function (value, key) {
+        obj[key] = value;
+      });
+      var json = JSON.stringify(obj),
+          request = new XMLHttpRequest();
+      request.open('POST', 'server.php');
+      request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+      request.send(json);
+      request.addEventListener('readystatechange', function () {
+        function postData() {
+          var promise = new Promise(function (resolve, reject) {
             if (request.readyState < 4) {
-              resolve();
-            } else if (request.readyState === 4) {
-              if (request.status == 200 && request.status < 3) {
-                resolve();
-              } else {
-                reject();
-              }
+              resolve(message.loadind);
+            } else if (request.readyState === 4 && request.status == 200) {
+              resolve(message.success);
+            } else {
+              reject();
             }
-          };
-
-          var obj = {};
-          formData.forEach(function (value, key) {
-            obj[key] = value;
           });
-          var json = JSON.stringify(obj);
-          request.send(json);
-          request.send(data);
-        });
-      } // end postData
+          return promise;
+        } // end postData
 
 
-      function clearInput() {
-        for (var i = 0; i < input.length; i++) {
-          input[i].value = '';
-        }
-      }
-
-      postData(formData).then(function () {
-        return status.message.innerHTML = message.loadind;
-      }).then(function () {
-        statusMessage.innerHTML = message.success;
-      }).catch(function () {
-        return statusMessage.innerHTML = message.failure;
-      }).then(clearInput);
+        postData().then(function () {
+          statusMessage.innerHTML = message.success;
+        }).catch(function () {
+          statusMessage.innerHTML = message.failure;
+        }).then(clearInput);
+      });
     });
+
+    function clearInput() {
+      for (var i = 0; i < input.length; i++) {
+        input[i].value = '';
+      }
+    }
   };
 
   sendForm(".main-form");
@@ -262,15 +255,16 @@ function form() {
 
       if (!value2.match(reg)) {
         a.value = value2;
+        console.log("good");
         return false;
       } else {
+        console.log("not");
         a.value = value;
         return false;
       }
     });
   }
 
-  ;
   validPhone("phone");
   validPhone("phone1");
 }
