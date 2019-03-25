@@ -309,7 +309,7 @@ window.addEventListener('DOMContentLoaded', () => {
             personsSum = +this.value;
             total = (daysSum + personsSum) * 4000;
             
-            if (restDays.value == '' || personsSum == "") {
+            if (restDays.value == '' || personsSum == "" || restDays.value == 0 || personsSum == 0) {
                 totalValue.innerHTML = 0;
             } else {
                 totalValue.innerHTML = total;
@@ -328,7 +328,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         place.addEventListener('change', function() {
-            if (restDays.value == "" || persons.value == "") {
+            if (restDays.value == "" || persons.value == "" || restDays.value == 0 || personsSum == 0) {
                 totalValue.innerHTML = 0;
             } else {
                 let a = total;

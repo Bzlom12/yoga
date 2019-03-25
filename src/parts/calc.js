@@ -13,7 +13,7 @@ function calc() {
         personsSum = +this.value;
         total = (daysSum + personsSum) * 4000;
         
-        if (restDays.value == '' || personsSum == "") {
+        if (restDays.value == '' || personsSum == "" || restDays.value == 0 || personsSum == 0) {
             totalValue.innerHTML = 0;
         } else {
             totalValue.innerHTML = total;
@@ -24,7 +24,7 @@ function calc() {
         daysSum = +this.value;
         total = (daysSum + personsSum) * 4000;
        
-        if (persons.value == '' || daysSum == "") {
+        if (persons.value == '' || daysSum == "" || restDays.value == 0 || personsSum == 0) {
             totalValue.innerHTML = 0;
         } else {
             totalValue.innerHTML = total;
@@ -32,7 +32,7 @@ function calc() {
     });
 
     place.addEventListener('change', function() {
-        if (restDays.value == "" || persons.value == "") {
+        if (restDays.value == "" || persons.value == "" || restDays.value == 0 || personsSum == 0) {
             totalValue.innerHTML = 0;
         } else {
             let a = total;
@@ -47,16 +47,16 @@ function calc() {
         let value = item.value;
         
         item.addEventListener("input", function(e) {
-        let reg = /[^\d$]/g;
-        let value2 = e.target.value;
+            let reg = /[^\d$]/g;
+            let value2 = e.target.value;
 
-        if (!value2.match(reg)) {
-            item.value = value2;
-            return false;
-        } else {
-            item.value = value;
-            return false;
-        }
+            if (!value2.match(reg)) {
+                item.value = value2;
+                return false;
+            } else {
+                item.value = value;
+                return false;
+            }
         });
     }); 
 }
