@@ -255,10 +255,8 @@ function form() {
 
       if (!value2.match(reg)) {
         a.value = value2;
-        console.log("good");
         return false;
       } else {
-        console.log("not");
         a.value = value;
         return false;
       }
