@@ -1592,7 +1592,8 @@ function calc() {
       totalValue = document.getElementById('total'),
       personsSum = 0,
       daysSum = 0,
-      total = 0;
+      total = 0,
+      k = 1;
   totalValue.innerHTML = 0;
   persons.addEventListener('change', function () {
     personsSum = +this.value;
@@ -1601,25 +1602,27 @@ function calc() {
     if (restDays.value == '' || personsSum == "" || restDays.value == 0 || personsSum == 0) {
       totalValue.innerHTML = 0;
     } else {
-      totalValue.innerHTML = total;
+      totalValue.innerHTML = k * total;
     }
   });
   restDays.addEventListener('change', function () {
     daysSum = +this.value;
     total = (daysSum + personsSum) * 4000;
 
-    if (persons.value == '' || daysSum == "" || restDays.value == 0 || personsSum == 0) {
+    if (persons.value == '' || daysSum == "") {
       totalValue.innerHTML = 0;
     } else {
-      totalValue.innerHTML = total;
+      totalValue.innerHTML = k * total;
     }
   });
   place.addEventListener('change', function () {
     if (restDays.value == "" || persons.value == "" || restDays.value == 0 || personsSum == 0) {
       totalValue.innerHTML = 0;
+      k = this.options[this.selectedIndex].value;
     } else {
       var a = total;
-      totalValue.innerHTML = a * this.options[this.selectedIndex].value;
+      k = this.options[this.selectedIndex].value;
+      totalValue.innerHTML = a * k;
     }
   }); //check calc
 
